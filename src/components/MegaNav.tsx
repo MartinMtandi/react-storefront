@@ -25,7 +25,7 @@ const MegaNav: React.FC<MegaNavProps> = ({ onSearch }) => {
                     </ContactItem>
                 </ContactInfo>
                 <LogoLink to="/">
-                    <Logo src="https://www.dvt.co.za/images/25-years/dvt-gold-25-ribbon.svg" alt="DVT Logo" />
+                    <Logo src="https://molla-theme.myshopify.com/cdn/shop/files/logo_e030e74e-482e-4de1-be8e-b200cb22b36f_120x@2x.png?v=1614744959" alt="Shop Logo" />
                 </LogoLink>
                 <RightContent>
                     <Searchbox onSearch={onSearch} />
