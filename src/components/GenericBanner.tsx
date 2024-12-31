@@ -56,7 +56,7 @@ function GenericBanner() {
   return (
     <Banner>
       <BannerContainer>
-        <Typography fontSize={"12px"}>Free shipping on all domestic orders with coupon code <Typography fontWeight={500} color='#C09578'>DVTCoupon</Typography></Typography>
+        <Typography fontSize={"12px"}>Free shipping on all domestic orders with coupon code <Typography fontWeight={500} color='#C09578'>StoreCoupon</Typography></Typography>
         <AccountLinks>
           <div ref={dropdownRef}>
             <AccountLink onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
