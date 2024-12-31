@@ -12,7 +12,7 @@
    git clone [repository-url]
    
    # Navigate to project directory
-   cd challenge-react-storefront-martin-mtandi
+   cd react-storefront
    
    # Install dependencies
    npm install
