@@ -48,7 +48,7 @@ function GenericBanner() {
               position="right"
             />
           </DropdownWrapper>
-          <Divider $margin="0 16px 0 0" />
+          <Divider $margin="0 16px" />
           <DropdownWrapper>
             <Dropdown
               options={accountOptions}
