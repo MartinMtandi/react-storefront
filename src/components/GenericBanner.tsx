@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Typography from './Typography';
 import { useDispatch, useSelector } from 'react-redux';
