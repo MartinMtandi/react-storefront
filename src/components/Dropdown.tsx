@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import { ChevronDown } from 'react-feather';
-import Typography from './Typography';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+import { ChevronDown } from "react-feather";
+import Typography from "./Typography";
+import { useNavigate } from "react-router-dom";
 
 interface DropdownOption {
   value: string;
@@ -13,36 +13,39 @@ interface DropdownProps {
   options: DropdownOption[];
   value?: string;
   onChange: (value: string) => void;
-  position?: 'left' | 'right' | 'center';
+  position?: "left" | "right" | "center";
   label?: string;
   placeholder?: string;
   isNavigationDropdown?: boolean;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ 
-  options, 
-  value, 
-  onChange, 
-  position = 'right',
+const Dropdown: React.FC<DropdownProps> = ({
+  options,
+  value,
+  onChange,
+  position = "right",
   label,
-  placeholder = 'Select option',
-  isNavigationDropdown = false
+  placeholder = "Select option",
+  isNavigationDropdown = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const selectedOption = options.find(opt => opt.value === value);
+  const selectedOption = options.find((opt) => opt.value === value);
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -55,18 +58,20 @@ const Dropdown: React.FC<DropdownProps> = ({
     setIsOpen(false);
   };
 
-  const displayText = label 
-    ? selectedOption 
+  const displayText = label
+    ? selectedOption
       ? `${label}: ${selectedOption.label}`
       : label
     : selectedOption
-      ? selectedOption.label
-      : placeholder;
+    ? selectedOption.label
+    : placeholder;
 
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={() => setIsOpen(!isOpen)}>
-        <Typography fontSize="14px">
+        <Typography
+          fontSize={displayText.includes("Sort by:") ? "14px" : "12px"}
+        >
           {displayText}
         </Typography>
         <ChevronIcon size={16} $isOpen={isOpen} />
@@ -116,21 +121,21 @@ const DropdownButton = styled.button`
 const DropdownMenu = styled.div<{ $isOpen: boolean; $position: string }>`
   position: absolute;
   top: calc(100% + 4px);
-  ${props => {
+  ${(props) => {
     switch (props.$position) {
-      case 'left':
-        return 'left: 0;';
-      case 'right':
-        return 'right: 0;';
+      case "left":
+        return "left: 0;";
+      case "right":
+        return "right: 0;";
       default:
-        return 'left: 50%; transform: translateX(-50%);';
+        return "left: 50%; transform: translateX(-50%);";
     }
   }}
   background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  display: ${props => props.$isOpen ? 'block' : 'none'};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: ${(props) => (props.$isOpen ? "block" : "none")};
   z-index: 1000;
   min-width: 150px;
 `;
@@ -139,7 +144,7 @@ const DropdownItem = styled.button<{ $isSelected: boolean }>`
   width: 100%;
   padding: 8px 12px;
   border: none;
-  background: ${props => props.$isSelected ? '#f5f5f5' : 'white'};
+  background: ${(props) => (props.$isSelected ? "#f5f5f5" : "white")};
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -152,7 +157,7 @@ const DropdownItem = styled.button<{ $isSelected: boolean }>`
 
 const ChevronIcon = styled(ChevronDown)<{ $isOpen: boolean }>`
   transition: transform 0.2s ease;
-  transform: ${props => props.$isOpen ? 'rotate(180deg)' : 'rotate(0)'};
+  transform: ${(props) => (props.$isOpen ? "rotate(180deg)" : "rotate(0)")};
 `;
 
 export default Dropdown;
