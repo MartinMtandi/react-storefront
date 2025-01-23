@@ -70,7 +70,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     <DropdownContainer ref={dropdownRef}>
       <DropdownButton onClick={() => setIsOpen(!isOpen)}>
         <Typography
-          fontSize={label && displayText.includes(label) ? "14px" : "12px"}
+          fontSize={displayText.includes("Sort by:") ? "14px" : "12px"}
         >
           {displayText}
         </Typography>
