@@ -27,6 +27,17 @@ vi.mock('react-feather', () => ({
       })
     });
   }),
+  ChevronDown: vi.fn().mockImplementation((props) => {
+    const { size, ...rest } = props;
+    return React.createElement('div', {
+      ...rest,
+      'data-testid': 'chevron-down',
+      style: {
+        width: size,
+        height: size
+      }
+    });
+  }),
   Heart: vi.fn().mockImplementation((props) => 
     React.createElement('div', {
       ...props,
